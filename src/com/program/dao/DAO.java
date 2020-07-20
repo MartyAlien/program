@@ -1,5 +1,7 @@
 package com.program.dao;
 
-public interface DAO {
+import java.util.List;
 
+public interface DAO {
+	List<?> getRightPost(String userName,String password);
 }
