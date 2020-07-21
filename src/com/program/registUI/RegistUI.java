@@ -33,6 +33,7 @@ public class RegistUI extends JFrame{
 	private JButton submitBtn,sendBtn;
 	private JComboBox< String > box;
 	private Font font=new Font("微软雅黑",Font.BOLD,15);
+	private Color color = new Color(191,230,240);
 	private Font fontField=new Font("微软雅黑",Font.PLAIN,20);
 	private User registUser=null;
 	
@@ -44,7 +45,7 @@ public class RegistUI extends JFrame{
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
-		getContentPane().setBackground(new Color(4,178,156));
+		getContentPane().setBackground(color);
 		this.setRigistStyle();
 		RegistListener registListener = new RegistListener(this, nameField,field, phoneField, keyField, passwordField, textArea, submitBtn, sendBtn, box);
 		submitBtn.addMouseListener(registListener);
@@ -60,7 +61,7 @@ public class RegistUI extends JFrame{
 		// 姓名+文本框
 		jPanel08=new JPanel();
 		jPanel08.setLayout(null);
-		jPanel08.setBackground(new Color(4,178,156));
+		jPanel08.setBackground(color);
 		JLabel jLabel08=new JLabel("姓名");
 		jLabel08.setBounds(100, 20, 60, 40);
 		jLabel08.setFont(font);
@@ -76,7 +77,7 @@ public class RegistUI extends JFrame{
 		// 用户名+文本框
 		jPanel01=new JPanel();
 		jPanel01.setLayout(null);
-		jPanel01.setBackground(new Color(4,178,156));
+		jPanel01.setBackground(color);
 		JLabel jLabel01=new JLabel("用户名");
 		jLabel01.setBounds(100, 20, 60, 40);
 		jLabel01.setFont(font);
@@ -92,7 +93,7 @@ public class RegistUI extends JFrame{
 		// 密码+密码框
 		jPanel02=new JPanel();
 		jPanel02.setLayout(null);
-		jPanel02.setBackground(new Color(4,178,156));
+		jPanel02.setBackground(color);
 		JLabel jLabel02=new JLabel("密码");
 		jLabel02.setBounds(100, 20, 60, 40);
 		jLabel02.setFont(font);
@@ -108,7 +109,7 @@ public class RegistUI extends JFrame{
 		// 手机号+文本框
 		jPanel03=new JPanel();
 		jPanel03.setLayout(null);
-		jPanel03.setBackground(new Color(4,178,156));
+		jPanel03.setBackground(color);
 		JLabel jLabel03=new JLabel("手机号");
 		jLabel03.setBounds(100, 20, 60, 30);
 		jLabel03.setFont(font);
@@ -125,7 +126,7 @@ public class RegistUI extends JFrame{
 		// 验证码+文本框
 		jPanel04=new JPanel();
 		jPanel04.setLayout(null);
-		jPanel04.setBackground(new Color(4,178,156));
+		jPanel04.setBackground(color);
 		JLabel jLabel04=new JLabel("验证码");
 		jLabel04.setBounds(100, 15, 60, 40);
 		jLabel04.setFont(font);
@@ -138,7 +139,7 @@ public class RegistUI extends JFrame{
 		sendBtn.setHorizontalTextPosition(JButton.CENTER);
 		sendBtn.setFocusPainted(false);
 		sendBtn.setBorderPainted(false);
-		sendBtn.setBackground(new Color(167,202,144));
+		sendBtn.setBackground(new Color(0,90,171));
 		sendBtn.setFont(new Font("幼圆",Font.PLAIN,14));
 		sendBtn.setForeground(Color.white);
 		sendBtn.setBounds(290, 15, 80, 40);
@@ -151,7 +152,7 @@ public class RegistUI extends JFrame{
 		
 		// 学历+下拉列表
 		jPanel05=new JPanel(null);
-		jPanel05.setBackground(new Color(4,178,156));
+		jPanel05.setBackground(color);
 		JLabel jLabel=new JLabel("类型");
 		jLabel.setBounds(100, 15, 60, 40);
 		jLabel.setFont(font);
@@ -169,7 +170,7 @@ public class RegistUI extends JFrame{
 		// 自我介绍+文本域
 		jPanel06=new JPanel();
 		jPanel06.setLayout(null);
-		jPanel06.setBackground(new Color(4,178,156));
+		jPanel06.setBackground(color);
 		JLabel jLabel05=new JLabel("门牌信息");
 		jLabel05.setBounds(100, 15, 60, 40);
 		jLabel05.setFont(font);
@@ -188,11 +189,11 @@ public class RegistUI extends JFrame{
 		// 提交按钮
 		jPanel07=new JPanel();
 		jPanel07.setLayout(null);
-		jPanel07.setBackground(new Color(4,178,156));
+		jPanel07.setBackground(color);
 		submitBtn=new JButton("注 册");
 		submitBtn.setFocusPainted(false);
 		submitBtn.setBorderPainted(false);
-		submitBtn.setBackground(new Color(67,162,244));
+		submitBtn.setBackground(new Color(0,90,171));
 		submitBtn.setFont(new Font("幼圆",Font.PLAIN,17));
 		submitBtn.setForeground(Color.white);
 		submitBtn.setBounds(220, 0, 78, 35);
