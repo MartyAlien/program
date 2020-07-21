@@ -18,4 +18,5 @@ public class StaticPeram {
 	final static String SignName = "物业收费管理系统";// 阿里云配置你自己的短信签名填入
 	// 必填:短信模板-可在短信控制台中找到
 	final static String TemplateCode[] = {"SMS_196618708","SMS_196653767"}; // 阿里云配置你自己的短信模板填入
+	// 0 注册模板  1 忘记模板 2 修改模板
 }

@@ -33,7 +33,6 @@ public class LoginListener implements ActionListener{
 	private JButton forgetButton;
 	private int mouseAtX = 0;
 	private int mouseAtY = 0;
-	private RegistUI regist;
 	public LoginListener() {
 		super();
 	}
@@ -86,7 +85,8 @@ public class LoginListener implements ActionListener{
 			 loginUI.setExtendedState(JFrame.ICONIFIED);
 		}
 		if(e.getSource()==registButton) {
-			regist=new RegistUI(); 
+			// 触发注册事件
+			SwingUtilities.invokeLater(()->new RegistUI()); 
 		}
 	}
 

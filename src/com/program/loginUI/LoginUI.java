@@ -41,7 +41,6 @@ public class LoginUI extends JFrame{
 		add(this.bgHead(),BorderLayout.PAGE_START);
 		add(this.floorBtn(),BorderLayout.PAGE_END);
 		add(this.cenPanel(),BorderLayout.CENTER);
-	    setAlwaysOnTop(true);
 	    // 实例化自定义监听器
 	    loginListener=new LoginListener(this,userNameField, passwordField, box, logButton,
 	    		minButton, closeButton, headPanel, registButton, forgetButton);

@@ -13,6 +13,20 @@ public class User {
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public User(String userName, String userPassword, String name, String phone, String userType, double advDeposit,
+			String palce, String available) {
+		super();
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.name = name;
+		this.phone = phone;
+		this.userType = userType;
+		this.advDeposit = advDeposit;
+		this.palce = palce;
+		this.available = available;
+	}
+
 	public User(String ID, String userName, String userPassword, String name, String phone, String userType,
 			double advDeposit, String palce, String available) {
 		super();

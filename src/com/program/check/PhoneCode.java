@@ -1,8 +1,6 @@
 package com.program.check;
 
 
-import java.util.Scanner;
-
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
@@ -15,28 +13,19 @@ import com.aliyuncs.profile.IClientProfile;
 
 public class PhoneCode {
 	private static String code ;
-	private static String codeNum ;
+	public static String codeNum ;
 	
-	public static void main(String[] args) {
-		// 向手机发送验证码0.045元/条
-		getPhonemsg("15184521767");
-		Scanner scanner=new Scanner(System.in);
-		System.out.println(code);
-		System.out.println("请输入验证码：");
-		System.out.println(codeNum.equals(scanner.next()));
-		scanner.close();
-	}
 	/**
 	 * 阿里云短信服务配置
 	 * @param mobile
 	 * @return
 	 */
-	public static String getPhonemsg(String mobile) {
+	public static String getPhonemsg(String mobile,int mode) {
  
 		/**
 		 * 进行正则关系校验
 		 */
-		System.out.println(mobile);
+		//System.out.println(mobile);
 		if (mobile == null || mobile == "") {
 			System.out.println("手机号为空");
 			return "";
@@ -78,7 +67,11 @@ public class PhoneCode {
 		// 必填:短信签名-可在短信控制台中找到
 		request.setSignName(StaticPeram.SignName);
 		// 必填:短信模板-可在短信控制台中找到
-		request.setTemplateCode(StaticPeram.TemplateCode[1]);
+		if(mode==0|mode==1) {
+			request.setTemplateCode(StaticPeram.TemplateCode[mode]);
+		}else {
+			return "无该模式";
+		}
 		// 可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
 		// 友情提示:如果JSON中需要带换行符,请参照标准的JSON协议对换行符的要求,比如短信内容中包含\r\n的情况在JSON中需要表示成\\r\\n,否则会导致JSON在服务端解析失败
 		//request.setTemplateParam("{ \"number\":\""+code+"\"}");
@@ -94,12 +87,12 @@ public class PhoneCode {
 			if (sendSmsResponse.getCode() != null
 					&& sendSmsResponse.getCode().equals("OK")) {
 				// 请求成功
-				System.out.println("获取验证码成功！！！");
+				//System.out.println("获取验证码成功！！！");
 			} else { 
 				//如果验证码出错，会输出错误码告诉你具体原因
 				//isv.MOBILE_NUMBER_ILLEGAL 手机号码非法
-				System.out.println(sendSmsResponse.getCode());
-				System.out.println("获取验证码失败...");
+				/*System.out.println(sendSmsResponse.getCode());
+				System.out.println("获取验证码失败...");*/
 			}
 		} catch (ServerException e) {
 			e.printStackTrace();

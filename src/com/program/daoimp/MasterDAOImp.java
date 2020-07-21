@@ -23,4 +23,10 @@ public class MasterDAOImp implements DAO{
 		masters = jt.query(sql, new BeanPropertyRowMapper<Master>(Master.class),userName,password);
 		return masters;
 	}
+	@Override
+	public int insertObj(List<?> list) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
