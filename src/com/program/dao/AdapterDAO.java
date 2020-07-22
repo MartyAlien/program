@@ -28,6 +28,10 @@ public class AdapterDAO implements DAO{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	public int updateForMaster(int ID, int selectedColumn, String newValue) {
+		return 0;
+	}
 	
 }

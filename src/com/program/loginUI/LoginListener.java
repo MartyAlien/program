@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import com.program.daoimp.MasterDAOImp;
 import com.program.daoimp.UserDAOImp;
 import com.program.master.Master;
+import com.program.masterUI.MasterUI;
 import com.program.registUI.RegistUI;
 import com.program.user.User;
 
@@ -108,6 +109,8 @@ public class LoginListener implements ActionListener{
 			if(list.size()!=0) {
 				Master master=list.get(0);
 				JOptionPane.showMessageDialog(loginUI, "你好，"+master.getName()+" 成功进入后台系统！","登录成功",JOptionPane.PLAIN_MESSAGE);
+				new MasterUI(master);
+				loginUI.dispose();
 			}else {
 				JOptionPane.showMessageDialog(loginUI, "物业管理员账号或者密码错误", "提示", JOptionPane.ERROR_MESSAGE);
 			}

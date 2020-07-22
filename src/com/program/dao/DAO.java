@@ -8,4 +8,5 @@ public interface DAO {
 	int insertObj(List<?> list) throws SQLException;
 	List<?> selectAll();
 	void delete(List<?> list);
+	int updateForMaster(int ID,int selectedColumn,String newValue);
 }

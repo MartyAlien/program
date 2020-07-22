@@ -8,14 +8,14 @@ public class User {
 	private String phone;	//用户手机
 	private String userType;	//用户类型：常住、租户
 	private double advDeposit;	//用户预存款
-	private String palce;	//门牌地址
+	private String place;	//门牌地址
 	private String available;	//是否可用
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public User(String userName, String userPassword, String name, String phone, String userType, double advDeposit,
-			String palce, String available) {
+			String place, String available) {
 		super();
 		this.userName = userName;
 		this.userPassword = userPassword;
@@ -23,12 +23,12 @@ public class User {
 		this.phone = phone;
 		this.userType = userType;
 		this.advDeposit = advDeposit;
-		this.palce = palce;
+		this.place = place;
 		this.available = available;
 	}
 
 	public User(String ID, String userName, String userPassword, String name, String phone, String userType,
-			double advDeposit, String palce, String available) {
+			double advDeposit, String place, String available) {
 		super();
 		this.ID = ID;
 		this.userName = userName;
@@ -37,7 +37,7 @@ public class User {
 		this.phone = phone;
 		this.userType = userType;
 		this.advDeposit = advDeposit;
-		this.palce = palce;
+		this.place = place;
 		this.available = available;
 	}
 	public String getID() {
@@ -82,11 +82,11 @@ public class User {
 	public void setAdvDeposit(double advDeposit) {
 		this.advDeposit = advDeposit;
 	}
-	public String getPalce() {
-		return palce;
+	public String getPlace() {
+		return place;
 	}
-	public void setPalce(String palce) {
-		this.palce = palce;
+	public void setPlace(String place) {
+		this.place = place;
 	}
 	public String getAvailable() {
 		return available;
@@ -94,11 +94,17 @@ public class User {
 	public void setAvailable(String available) {
 		this.available = available;
 	}
+	
 	@Override
 	public String toString() {
 		return "User [ID=" + ID + ", userName=" + userName + ", userPassword=" + userPassword + ", name=" + name
-				+ ", phone=" + phone + ", userType=" + userType + ", advDeposit=" + advDeposit + ", palce=" + palce
+				+ ", phone=" + phone + ", userType=" + userType + ", advDeposit=" + advDeposit + ", place=" + place
 				+ ", available=" + available + "]";
+	}
+
+	public Object[] toStrArray() {
+		Object[] objects= {ID,userName,name,phone,userType,place,available};//"编号","用户名","业主姓名","手机","类型","门牌","是否可用"
+		return objects;
 	}
 	
 }

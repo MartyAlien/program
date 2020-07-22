@@ -3,8 +3,11 @@ package com.program.masterUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,12 +19,13 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import com.program.daoimp.PaymentDAOImp;
+import com.program.master.Master;
 import com.program.payment.Payment;
 
 public class MasterUI extends JFrame{
 	private static final long serialVersionUID = -18044L;
 	Color color=new Color(191,230,240);
-	private Payment payment=new Payment();
+	private Master master=null;
 	private List<Payment> lists;
 	private JPanel headPanel;
 	private JPanel jPanel01,jPanel02,jPanel03;
@@ -33,10 +37,29 @@ public class MasterUI extends JFrame{
 	private JButton miniBtn,closeBtn;
 	private String[] columnNames = { "编号","用户名", "检修费", "清洁费", "停车费", "缴费日期","是否缴费" };
 	private MasterListener masterListener;
+	private MasterPaneSon1 masterPaneSon1=new MasterPaneSon1();
+	private MasterPaneSon2 masterPaneSon2=new MasterPaneSon2();
+	
+	
 	Object[][] data;
 
 	public MasterUI() throws HeadlessException {
-		super("物业收费管理系统-物管模式");
+		setSize(900, 700);
+		setLayout(null);
+		setLocationRelativeTo(null);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    getContentPane().setBackground(color);
+	    setUndecorated(true);
+	    setResizable(false);
+	    initHeadPane();
+	    add(initJTabbedPane());
+	    this.masterListener = new MasterListener(this,allTabbedPane,payJTable,headPanel
+	    		, refleshBtn, addBtn, modBtn, dellBtn,miniBtn,closeBtn,masterPaneSon1,masterPaneSon2);
+	    setVisible(true);
+	}
+	
+	public MasterUI(Master master) throws HeadlessException {
+		this.master = master;
 		setSize(900, 700);
 		setLayout(null);
 		setLocationRelativeTo(null);
@@ -46,9 +69,11 @@ public class MasterUI extends JFrame{
         setResizable(false);
         initHeadPane();
         add(initJTabbedPane());
-        this.masterListener = new MasterListener(this,allTabbedPane,payJTable,headPanel, refleshBtn, addBtn, modBtn, dellBtn);
+        this.masterListener = new MasterListener(this,allTabbedPane,payJTable,headPanel
+        		, refleshBtn, addBtn, modBtn, dellBtn,miniBtn,closeBtn,masterPaneSon1,masterPaneSon2);
         setVisible(true);
 	}
+
 	public void initHeadPane() {
 		headPanel=new JPanel(null);
         headPanel.setBounds(0, 0, 900, 60);
@@ -56,15 +81,45 @@ public class MasterUI extends JFrame{
         
         miniBtn=new JButton();
         closeBtn=new JButton();
-        miniBtn.setBounds(795,5,50,50);
+        miniBtn.setBounds(786,5,50,50);
         closeBtn.setBounds(845,5,50,50);
         miniBtn.setFocusPainted(false);
         closeBtn.setFocusPainted(false);
         miniBtn.setBorder(null);
         closeBtn.setBorder(null);
+        miniBtn.setBackground(null);
+        closeBtn.setBackground(null);
+        
+        miniBtn.setIcon(new ImageIcon("mstUI_img/mini2.png"));
+        miniBtn.setRolloverIcon(new ImageIcon("mstUI_img/mini1.png"));
+        miniBtn.setPressedIcon(new ImageIcon("mstUI_img/mini3.png"));
+        closeBtn.setIcon(new ImageIcon("mstUI_img/close2.png"));
+        closeBtn.setRolloverIcon(new ImageIcon("mstUI_img/close1.png"));
+        closeBtn.setPressedIcon(new ImageIcon("mstUI_img/close3.png"));
+        
         headPanel.add(miniBtn);
         headPanel.add(closeBtn);
+        
+        JLabel showWhoJLabel=new JLabel();
+        showWhoJLabel.setBounds(20, 0, 600, 60);
+        showWhoJLabel.setFont(new Font("微软雅黑",Font.BOLD,20));
+        String textString="物业收费系统-物管模式   Hi! "+master.getName()+" ,今天是"+getDateStr();
+        //String textString="物业收费系统-物管模式   Hi! "+" ,今天是"+getDateStr();
+        showWhoJLabel.setText(textString);
+        headPanel.add(showWhoJLabel);
+        
         add(headPanel);
+	}
+
+	private static String getDateStr() {
+		Calendar c=Calendar.getInstance();
+		Date d=new Date();
+		c.setTime(d);//设置指定时间
+		//System.out.println(c);
+		int year=c.get(Calendar.YEAR);
+		int month=c.get(Calendar.MONTH)+1;  //默认是0-11，我国是1-12
+		int day=c.get(Calendar.DAY_OF_MONTH);
+		return year+"/"+month+"/"+day;
 	}
 	public  JTabbedPane initJTabbedPane() {
 		allTabbedPane=new JTabbedPane();
@@ -84,7 +139,7 @@ public class MasterUI extends JFrame{
 		allTabbedPane.setTitleAt(1, "生成业单");
 		allTabbedPane.addTab("jPanel03", jPanel03); //添加选项卡容器，并且设置其中每个选项卡的标签以及其是否可启用
 		allTabbedPane.setEnabledAt(2, true);
-		allTabbedPane.setTitleAt(2, "资料设置");
+		allTabbedPane.setTitleAt(2, "用户管理");
 		
 		allTabbedPane.setUI(new TabbedPaneDef());
 		allTabbedPane.setBounds(0, 60, 900, 640);
@@ -93,6 +148,8 @@ public class MasterUI extends JFrame{
 		
 		jPanel01.add(initScrollPane());
 		jPanel01.add(initBtnPane());
+		jPanel02.add(masterPaneSon1);
+		jPanel03.add(masterPaneSon2);
 		return allTabbedPane;
 	}
 	private JScrollPane initScrollPane() {
@@ -171,7 +228,13 @@ public class MasterUI extends JFrame{
 		return floorPanel;
 	}
 	
-	public static void main(String[] args) {
-		new MasterUI();
+	public JPanel initJpanel02() {
+		JPanel jPanel=new JPanel();
+		
+		return jPanel;
 	}
+	
+	/*public static void main(String[] args) {
+		new MasterUI();
+	}*/
 }
