@@ -11,11 +11,12 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.program.dao.AdapterDAO;
 import com.program.dao.DAO;
 import com.program.druidJDBCutil.DruidJDBC;
 import com.program.user.User;
 
-public class UserDAOImp implements DAO{
+public class UserDAOImp extends AdapterDAO{
 	DataSource dataSource=DruidJDBC.getDataSource();
 	JdbcTemplate jt=new JdbcTemplate(dataSource);
 	String sql;

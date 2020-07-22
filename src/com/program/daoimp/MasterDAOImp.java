@@ -7,11 +7,12 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.program.dao.AdapterDAO;
 import com.program.dao.DAO;
 import com.program.druidJDBCutil.DruidJDBC;
 import com.program.master.Master;
 
-public class MasterDAOImp implements DAO{
+public class MasterDAOImp extends AdapterDAO{
 	DataSource dataSource=DruidJDBC.getDataSource();
 	JdbcTemplate jt=new JdbcTemplate(dataSource);
 	String sql;

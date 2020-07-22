@@ -6,4 +6,6 @@ import java.util.List;
 public interface DAO {
 	List<?> getRightPost(String userName,String password);
 	int insertObj(List<?> list) throws SQLException;
+	List<?> selectAll();
+	void delete(List<?> list);
 }
