@@ -233,6 +233,11 @@ public class MasterUI extends JFrame{
 		
 		return jPanel;
 	}
+
+	public MasterListener getMasterListener() {
+		return masterListener;
+	}
+
 	
 	/*public static void main(String[] args) {
 		new MasterUI();

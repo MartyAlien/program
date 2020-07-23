@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import com.program.dao.AdapterDAO;
 import com.program.druidJDBCutil.DruidJDBC;
 import com.program.payment.Payment;
+import com.program.user.User;
 
 public class PaymentDAOImp extends AdapterDAO{
 	JdbcTemplate jt=new JdbcTemplate(DruidJDBC.getDataSource());
@@ -20,6 +21,13 @@ public class PaymentDAOImp extends AdapterDAO{
 		// TODO Auto-generated method stub
 		sql="select * from pay";
 		List<Payment> list = jt.query(sql, new BeanPropertyRowMapper<Payment>(Payment.class));
+		return list;
+	}
+	// 重载
+	public List<?> selectAll(User u) {
+		// TODO Auto-generated method stub
+		sql="select * from pay where userName=? and isPay='1'";
+		List<Payment> list = jt.query(sql, new BeanPropertyRowMapper<Payment>(Payment.class),u.getUserName());
 		return list;
 	}
 	@SuppressWarnings("unchecked")
@@ -48,6 +56,5 @@ public class PaymentDAOImp extends AdapterDAO{
 		}
 		return count;
 	}
-	
 	
 }

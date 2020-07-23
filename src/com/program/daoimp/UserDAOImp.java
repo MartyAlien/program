@@ -88,4 +88,21 @@ public class UserDAOImp extends AdapterDAO{
 		int updateNum = jt.update(sql,newValue,ID);
 		return updateNum;
 	}
+	@Override
+	public int updateForUser(int ID, int selectedRow, String newValue) {
+		// TODO Auto-generated method stub
+		if(selectedRow==1) {
+			sql="update user set userPassword=? where ID=?";
+		}else if (selectedRow==2) {
+			sql="update user set name=? where ID=?";
+		}else if (selectedRow==3) {
+			sql="update user set phone=? where ID=?";
+		}else if (selectedRow==6) {
+			sql="update user set place=? where ID=?";
+		}else {
+			return -1;
+		}
+		int updateNum = jt.update(sql,newValue,ID);
+		return updateNum;
+	}
 }

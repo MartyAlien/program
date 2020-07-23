@@ -33,5 +33,12 @@ public class AdapterDAO implements DAO{
 	public int updateForMaster(int ID, int selectedColumn, String newValue) {
 		return 0;
 	}
+
+	@Override
+	public int updateForUser(int ID, int selectedRow, String newValue) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	
 }

@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -31,6 +30,7 @@ public class MasterListener implements ActionListener{
 	private MasterUI masterUI;
 	private JTabbedPane allTabbedPane;
 	private JTable payJTable;
+	@SuppressWarnings("unused")
 	private JPanel headPanel;
 	private JButton refleshBtn,addBtn,modBtn,dellBtn;
 	private JButton miniBtn,closeBtn;

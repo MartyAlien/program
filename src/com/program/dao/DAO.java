@@ -9,4 +9,5 @@ public interface DAO {
 	List<?> selectAll();
 	void delete(List<?> list);
 	int updateForMaster(int ID,int selectedColumn,String newValue);
+	int updateForUser(int ID,int selectedRow,String newValue);
 }

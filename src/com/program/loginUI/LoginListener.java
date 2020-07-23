@@ -22,6 +22,7 @@ import com.program.master.Master;
 import com.program.masterUI.MasterUI;
 import com.program.registUI.RegistUI;
 import com.program.user.User;
+import com.program.userUI.UserUI;
 
 public class LoginListener implements ActionListener{
 	private JFrame loginUI;
@@ -100,6 +101,9 @@ public class LoginListener implements ActionListener{
 			if(list.size()!=0) {
 				User user=list.get(0);
 				JOptionPane.showMessageDialog(loginUI, "你好，"+user.getName()+" 欢迎使用本系统！","登录成功",JOptionPane.PLAIN_MESSAGE);
+				SwingUtilities.invokeLater(()->new UserUI(user));
+				System.out.println(user);
+				loginUI.dispose();
 			}else {
 				JOptionPane.showMessageDialog(loginUI, "居民账号或者密码错误", "提示", JOptionPane.ERROR_MESSAGE);
 			}
