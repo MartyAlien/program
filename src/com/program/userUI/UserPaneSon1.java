@@ -143,12 +143,14 @@ public class UserPaneSon1 extends JPanel{
 		return willPayBox;
 	}
 	public List<Payment> getNoPayList() {
+		@SuppressWarnings("unchecked")
 		List<Payment> selectForNoPay = (List<Payment>)new PaymentDAOImp().selectForNoPay(user.getUserName());
 		return selectForNoPay;
 	}
 	public ItemListener getItemListener() {
 		ItemListener itemListener=new ItemListener() {
 			
+			@SuppressWarnings("static-access")
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==e.SELECTED) {

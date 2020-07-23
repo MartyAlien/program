@@ -34,11 +34,6 @@ public class UserPaneSon2 extends JPanel{
 		super(null);
 		setBounds(0, 0, 900, 590);
 		setBackground(Color.WHITE);
-		/*this.user=new User();
-		user.setUserName("1623637010");
-		user.setPhone("15082542389");
-		user.setName("谭亚军");
-		add(initScrollPane(this.getPayments(this.user)));*/
 	}
 	// 有参构造  总体测试用
 	public UserPaneSon2(User user) {
@@ -47,7 +42,6 @@ public class UserPaneSon2 extends JPanel{
 		add(initScrollPane(this.getPayments(this.user)));
 		this.delBtn=this.initJButton(delBtn, "删除记录", 750, 520);
 		add(this.delBtn);
-//		this.delBtn.addActionListener();
 	}
 	private JScrollPane initScrollPane(List<Payment> list) {
 		jScrollPane=new JScrollPane();

@@ -20,6 +20,7 @@ import com.program.payment.Payment;
 import com.program.user.User;
 
 public class UserUI extends JFrame{
+	private static final long serialVersionUID = -2001111L;
 	Color color=new Color(191,230,240);
 	private JTabbedPane uTabbedPane;
 	private JPanel jPanel01,jPanel02,jPanel03;
@@ -30,22 +31,6 @@ public class UserUI extends JFrame{
 	private UserPaneSon1 paneSon1;
 	private UserPaneSon2 paneSon2;
 	private UserPaneSon3 paneSon3;
-	private UserListener userListener;
-	
-	public UserUI() throws HeadlessException {
-		setSize(900, 700);
-		setLayout(null);
-		setLocationRelativeTo(null);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    getContentPane().setBackground(color);
-	    setUndecorated(true);
-	    setResizable(false);
-	    initHeadPane();
-	    add(initJTabbedPane());
-	    this.userListener=new UserListener(this);  // new一个监听器
-	    
-	    setVisible(true);
-	}
 	
 	public UserUI(User user) throws HeadlessException {
 		this.user = user;
@@ -58,7 +43,7 @@ public class UserUI extends JFrame{
 	    setResizable(false);
 	    initHeadPane();
 	    add(initJTabbedPane());
-	    this.userListener=new UserListener(this);  // new一个监听器
+	    new UserListener(this);
 	    
 	    setVisible(true);
 	}
@@ -92,8 +77,8 @@ public class UserUI extends JFrame{
         JLabel showWhoJLabel=new JLabel();
         showWhoJLabel.setBounds(20, 0, 600, 60);
         showWhoJLabel.setFont(new Font("微软雅黑",Font.BOLD,20));
-        //String textString="物业收费系统-居民模式   Hi! "+user.getName()+" ,今天是"+getDateStr();
-        String textString="物业收费系统-居民模式   Hi! "+" ,今天是"+getDateStr();
+        String textString="物业收费系统-居民模式   Hi! "+user.getName()+" ,今天是"+getDateStr();
+        //String textString="物业收费系统-居民模式   Hi! "+" ,今天是"+getDateStr();
         showWhoJLabel.setText(textString);
         headPanel.add(showWhoJLabel);
         
@@ -133,19 +118,12 @@ public class UserUI extends JFrame{
 		uTabbedPane.setFont(new Font("宋体", Font.BOLD, 18));
 		uTabbedPane.setForeground(new Color(255,255,255));
 		
-		/*jPanel01.add(initScrollPane());
-		jPanel01.add(initBtnPane());
-		jPanel02.add(masterPaneSon1);
-		jPanel03.add(masterPaneSon2);*/
-//		paneSon1=new UserPaneSon1();
 		paneSon1=new UserPaneSon1(user);
 		jPanel01.add(paneSon1);
 		paneSon2=new UserPaneSon2(user);
-//		paneSon2=new UserPaneSon2();
 		jPanel02.add(paneSon2);
 		paneSon3=new UserPaneSon3(user);
 		paneSon3.setOwner(this);
-//		paneSon3=new UserPaneSon3();
 		jPanel03.add(paneSon3);
 		return uTabbedPane;
 	}
@@ -239,13 +217,11 @@ public class UserUI extends JFrame{
 	}
 	// getNewUser 方法用于用户资料数据更新操作
 	public User getNewUser(User oldUser) {
+		@SuppressWarnings("unchecked")
 		List<User> selectOne = (List<User>)new UserDAOImp().selectOne(oldUser);
 		if(selectOne.size()<=0) {
 			return null;
 		}
 		return selectOne.get(0);
-	}
-	public static void main(String[] args) {
-		new UserUI(new User("1","1623637010","tyj123","谭亚军","15082542389","常住",1000.0,"地球","1"));
 	}
 }

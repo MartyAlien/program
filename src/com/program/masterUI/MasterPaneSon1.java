@@ -15,6 +15,7 @@ import com.program.daoimp.UserDAOImp;
 import com.program.user.User;
 
 public class MasterPaneSon1 extends JPanel{
+	private static final long serialVersionUID = -111201L;
 	private JButton yesButton,clearButton;
 	private JComboBox<String> payBox;
 	private JTextField field01,field02,field03,field04,infoField01,infoField02,infoField03;
@@ -122,11 +123,13 @@ public class MasterPaneSon1 extends JPanel{
 		return box;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<User> getUserLists() {
 		return (List<User>)new UserDAOImp().selectAll();
 	}
 	
 	public ItemListener getItemListener() {
+		@SuppressWarnings("static-access")
 		ItemListener itemListener=e -> {
 			if(e.getStateChange()==e.SELECTED) {
 				if(payBox.getSelectedIndex()==0) {

@@ -13,5 +13,5 @@ public interface DAO {
 	int updateForMaster(int ID,int selectedColumn,String newValue);
 	int updateForUser(int ID,int selectedRow,String newValue);
 	int updateForBill(int UID,int PID,int newMoney);
-	
+	int updateForForget(String userName,String phone,String newPassword);
 }

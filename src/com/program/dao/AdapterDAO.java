@@ -57,7 +57,12 @@ public class AdapterDAO implements DAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public int updateForForget(String userName, String phone, String newPassword) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,9 +17,6 @@ import com.program.daoimp.UserDAOImp;
 import com.program.user.User;
 
 public class UserPaneSon3 extends JPanel{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1804L;
 	private User user;
 	private JScrollPane jScrollPane;
@@ -52,6 +48,7 @@ public class UserPaneSon3 extends JPanel{
 		jScrollPane.setViewportView(getViewtable());
 		return jScrollPane;
 	}
+	@SuppressWarnings("serial")
 	private JTable getViewtable() {
 		data=createArr();
 		dtm=new DefaultTableModel(data,columnNames);
@@ -102,6 +99,7 @@ public class UserPaneSon3 extends JPanel{
 				int flag = codeDialog.getFlag();
 				if(flag==1) {
 					String newValue=vtable.getValueAt(vtable.getSelectedRow(), vtable.getSelectedColumn())+"";
+					@SuppressWarnings("unused")
 					int successNum = new UserDAOImp().updateForUser(Integer.parseInt(user.getID()), vtable.getSelectedRow(), newValue);
 					User newUser = owner.getNewUser(owner.getUser());
 					owner.dispose();

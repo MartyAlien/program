@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.program.dao.AdapterDAO;
-import com.program.dao.DAO;
 import com.program.druidJDBCutil.DruidJDBC;
 import com.program.master.Master;
 

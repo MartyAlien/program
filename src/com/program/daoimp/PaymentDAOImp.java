@@ -1,12 +1,10 @@
 package com.program.daoimp;
 
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import com.program.dao.AdapterDAO;
 import com.program.druidJDBCutil.DruidJDBC;
@@ -49,6 +47,7 @@ public class PaymentDAOImp extends AdapterDAO{
 		if(list.size()<=0) {
 			return -1;
 		}
+		@SuppressWarnings("unchecked")
 		List<Payment> l=(List<Payment>)list;
 		sql="insert into pay(userName,checkEXP,cleanEXP,parkEXP) values(?,?,?,?)";
 		for(Payment p:l) {

@@ -62,6 +62,7 @@ public class UserDAOImp extends AdapterDAO{
 		List<User> list = jt.query(sql, new BeanPropertyRowMapper<User>(User.class));
 		return list;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public void delete(List<?> list) {
 		if (list.size()<=0) {
@@ -120,11 +121,24 @@ public class UserDAOImp extends AdapterDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public List<User> selectOne(String userName,String phone) {
+		sql="select * from user where userName=? and phone=?";
+		List<User> query = jt.query(sql, new BeanPropertyRowMapper<User>(User.class),userName,phone);
+		return query;
+	}
+	@SuppressWarnings("unchecked")
 	public List<?> selectOne(Object obj) {
 		User user=(User)obj;
 		sql="select * from user where userName=?";
+		@SuppressWarnings("rawtypes")
 		List<User> query =(List<User>) jt.query(sql, new BeanPropertyRowMapper(User.class),user.getUserName());
 		return query;
+	}
+	@Override
+	public int updateForForget(String userName, String phone, String newPassword) {
+		sql="update user set userPassword=? where userName=? and phone=?";
+		int update = jt.update(sql,newPassword,userName,phone);
+		return update;
 	}
 	
 }

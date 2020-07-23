@@ -216,8 +216,4 @@ public class RegistUI extends JFrame{
 		int insertNum = new UserDAOImp().insertObj(list);
 		return insertNum;
 	}
-	
-	/*public static void main(String[] args) {
-		new RegistUI();
-	}*/
 }

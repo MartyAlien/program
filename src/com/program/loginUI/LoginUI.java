@@ -50,6 +50,7 @@ public class LoginUI extends JFrame{
 	    minButton.addActionListener(loginListener);
 	    closeButton.addActionListener(loginListener);
 	    registButton.addActionListener(loginListener);
+	    forgetButton.addActionListener(loginListener);
 	    
 		setVisible(true); 
 	}

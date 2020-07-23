@@ -19,6 +19,7 @@ import com.program.daoimp.UserDAOImp;
 import com.program.user.User;
 
 public class MasterPaneSon2 extends JPanel{
+	private static final long serialVersionUID = -1101L;
 	private List<User> userList;
 	private JTable userTable;
 	private String[] columnNames = {"编号","用户名","业主姓名","手机","类型","门牌","是否可用"};
@@ -71,6 +72,7 @@ public class MasterPaneSon2 extends JPanel{
 		return button;
 	}
 	public List<User> getUsersList() {
+		@SuppressWarnings("unchecked")
 		List<User> userAll = (List<User>)new UserDAOImp().selectAll();
 		if(userAll.size()<=0) {
 			userAll.add(new User());
@@ -92,6 +94,8 @@ public class MasterPaneSon2 extends JPanel{
 		}
 		dtm=new DefaultTableModel(data,columnNames);
 		userTable=new JTable(dtm) {
+			private static final long serialVersionUID = -021L;
+
 			// 重写这个表格的方法：设置不可编辑，但可以选中
 			@Override
 			public boolean isCellEditable(int row, int column) {

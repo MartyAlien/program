@@ -115,7 +115,6 @@ public class MasterUI extends JFrame{
 		Calendar c=Calendar.getInstance();
 		Date d=new Date();
 		c.setTime(d);//设置指定时间
-		//System.out.println(c);
 		int year=c.get(Calendar.YEAR);
 		int month=c.get(Calendar.MONTH)+1;  //默认是0-11，我国是1-12
 		int day=c.get(Calendar.DAY_OF_MONTH);
@@ -160,9 +159,6 @@ public class MasterUI extends JFrame{
 		return payScrollPane;
 	}
 	private JTable getViewtable() {
-		/*if (payJTable == null) {
-			payJTable = new JTable();
-		}*/
 		lists=getPayments();
 		data=new Object[lists.size()][];
 		int i=0;
@@ -171,6 +167,8 @@ public class MasterUI extends JFrame{
 		}
 		DefaultTableModel dtm=new DefaultTableModel(data,columnNames);
 		payJTable=new JTable(dtm) {
+			private static final long serialVersionUID = -2001L;
+
 			// 重写这个表格的方法：设置不可编辑，但可以选中
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -206,17 +204,38 @@ public class MasterUI extends JFrame{
 	
 	private JPanel initBtnPane() {
 		this.floorPanel=new JPanel(null);
-		this.refleshBtn=new JButton("刷新");
-		this.addBtn=new JButton("添加");
-		this.modBtn=new JButton("修改");
-		this.dellBtn=new JButton("删除");
+		this.refleshBtn=new JButton("刷  新");
+		this.addBtn=new JButton("添  加");
+		this.modBtn=new JButton("修  改");
+		this.dellBtn=new JButton("删  除");
 		
 		refleshBtn.setBounds(40, 20, 100, 40);
 		addBtn.setBounds(150, 20, 100, 40);
 		modBtn.setBounds(260, 20, 100, 40);
+		dellBtn.setBounds(370, 20, 100, 40);
+		
+		refleshBtn.setBorder(null);
+		addBtn.setBorder(null);
+		modBtn.setBorder(null);
+		dellBtn.setBorder(null);
+		refleshBtn.setFocusPainted(false);
+		addBtn.setFocusPainted(false);
+		modBtn.setFocusPainted(false);
+		dellBtn.setFocusPainted(false);
+		addBtn.setBackground(new Color(22, 141, 90));
+		refleshBtn.setBackground(new Color(138, 41, 48));
+		dellBtn.setBackground(new Color(219,81,69));
+		modBtn.setBackground(new Color(191, 230, 230));
+		addBtn.setForeground(Color.white);
+		modBtn.setForeground(Color.white);
+		dellBtn.setForeground(Color.white);
+		refleshBtn.setForeground(Color.white);
+		refleshBtn.setFont(new Font("",Font.PLAIN,16));
+		addBtn.setFont(new Font("",Font.PLAIN,16));
+		modBtn.setFont(new Font("",Font.PLAIN,16));
+		dellBtn.setFont(new Font("",Font.PLAIN,16));
 		modBtn.setToolTipText("管理员是不能修改账单的！");
 		modBtn.setEnabled(false);
-		dellBtn.setBounds(370, 20, 100, 40);
 		
 		floorPanel.setBounds(0, 500, 900, 88);
 		floorPanel.setBackground(Color.WHITE);

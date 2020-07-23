@@ -18,10 +18,6 @@ import javax.swing.table.DefaultTableModel;
 
 import com.program.check.PhoneCode;
 
-/**
- * @author 16236
- *
- */
 public class CodeDialog {
 	JDialog dialog;
 	JTextField field01,field02;

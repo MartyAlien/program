@@ -18,6 +18,7 @@ import javax.swing.SwingUtilities;
 
 import com.program.daoimp.MasterDAOImp;
 import com.program.daoimp.UserDAOImp;
+import com.program.forgetUI.ForgetUI;
 import com.program.master.Master;
 import com.program.masterUI.MasterUI;
 import com.program.registUI.RegistUI;
@@ -89,6 +90,10 @@ public class LoginListener implements ActionListener{
 		if(e.getSource()==registButton) {
 			// 触发注册事件
 			SwingUtilities.invokeLater(()->new RegistUI()); 
+		}
+		if(e.getSource()==forgetButton) {
+			// 触发找回密码事件
+			SwingUtilities.invokeLater(()->new ForgetUI());
 		}
 	}
 

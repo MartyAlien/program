@@ -25,7 +25,6 @@ import com.program.user.User;
 
 public class UserListener implements ActionListener{
 	private UserUI userUI;
-	@SuppressWarnings("unused")
 	private UserPaneSon1 sPanel01;
 	private UserPaneSon2 sPanel02;
 	@SuppressWarnings("unused")
