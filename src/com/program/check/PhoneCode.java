@@ -115,4 +115,8 @@ public class PhoneCode {
         }
         return vcode;
 	}
+	/*public static void main(String[] args) {
+		String phonemsg = PhoneCode.getPhonemsg("15082542389", 1);
+		System.out.println(phonemsg);
+	}*/
 }

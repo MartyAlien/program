@@ -62,4 +62,5 @@ public class PaymentDAOImp extends AdapterDAO{
 		List<Payment> query = jt.query(sql, new BeanPropertyRowMapper<Payment>(Payment.class),userName);
 		return query;
 	}
+	
 }

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -102,7 +103,9 @@ public class UserPaneSon3 extends JPanel{
 				if(flag==1) {
 					String newValue=vtable.getValueAt(vtable.getSelectedRow(), vtable.getSelectedColumn())+"";
 					int successNum = new UserDAOImp().updateForUser(Integer.parseInt(user.getID()), vtable.getSelectedRow(), newValue);
-					System.out.println(successNum+"条成功修改");
+					User newUser = owner.getNewUser(owner.getUser());
+					owner.dispose();
+					SwingUtilities.invokeLater(()->new UserUI(newUser));
 				}
 			}
 		});

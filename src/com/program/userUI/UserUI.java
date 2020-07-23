@@ -12,9 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import com.program.daoimp.UserDAOImp;
 import com.program.masterUI.TabbedPaneDef;
 import com.program.payment.Payment;
 import com.program.user.User;
@@ -237,7 +237,14 @@ public class UserUI extends JFrame{
 	public void setPaneSon3(UserPaneSon3 paneSon3) {
 		this.paneSon3 = paneSon3;
 	}
-	
+	// getNewUser 方法用于用户资料数据更新操作
+	public User getNewUser(User oldUser) {
+		List<User> selectOne = (List<User>)new UserDAOImp().selectOne(oldUser);
+		if(selectOne.size()<=0) {
+			return null;
+		}
+		return selectOne.get(0);
+	}
 	public static void main(String[] args) {
 		new UserUI(new User("1","1623637010","tyj123","谭亚军","15082542389","常住",1000.0,"地球","1"));
 	}

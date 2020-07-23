@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -74,16 +76,38 @@ public class UserPaneSon1 extends JPanel{
 		}
 		vFields[2].setBounds(380, 220, 100, 40);
 		vFields[3].setBounds(540, 280, 250, 40);
-		vFields[4].setBounds(480, 340, 100, 40);
+		vFields[4].setBounds(480, 340, 150, 40);
 		vFields[3].setBorder(null);
 		vFields[3].setBackground(null);
 		vFields[4].setBorder(null);
 		vFields[4].setBackground(null);
+		JTextField field=new JTextField();
+		field.setBounds(585, 220, 200, 40);
+		field.setBorder(null);
+		field.setBackground(null);
+		field.setEditable(false);
+		KeyAdapter adapter=new KeyAdapter() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int keyChar=e.getKeyChar();
+				if(!(new String(((char)keyChar)+"").matches("^[0-9]+$"))){
+					field.setText("*检测到写非数字字符自动删除");
+					field.setForeground(Color.RED);
+					e.consume();
+				}else {
+					field.setText("");
+				}
+			}
+			
+		};
+		this.add(field);
+		vFields[2].addKeyListener(adapter);
 		return vFields;
 	}
 	public JButton payBtnSetting() {
 		this.payBtn=new JButton("支   付");
-		payBtn.setBounds(380, 420, 130, 50);
+		payBtn.setBounds(380, 420, 200, 50);
 		payBtn.setBorder(null);
 		payBtn.setFocusPainted(false);
 		payBtn.setBackground(new Color(103,172,80));
@@ -144,7 +168,7 @@ public class UserPaneSon1 extends JPanel{
 						for(Payment np:list) {
 							if(np.getID()==payID) {
 								fields[3].setText("设备检查费:"+np.getCheckEXP()+"元 清洁费:"+np.getCleanEXP()+"元 停车费:"+np.getParkEXP());
-								fields[4].setText("总计："+(np.getCheckEXP()+np.getCleanEXP()+np.getParkEXP())+"元");
+								fields[4].setText("总计:"+(np.getCheckEXP()+np.getCleanEXP()+np.getParkEXP())+"元");
 							}
 						}
 					}

@@ -102,7 +102,6 @@ public class LoginListener implements ActionListener{
 				User user=list.get(0);
 				JOptionPane.showMessageDialog(loginUI, "你好，"+user.getName()+" 欢迎使用本系统！","登录成功",JOptionPane.PLAIN_MESSAGE);
 				SwingUtilities.invokeLater(()->new UserUI(user));
-				System.out.println(user);
 				loginUI.dispose();
 			}else {
 				JOptionPane.showMessageDialog(loginUI, "居民账号或者密码错误", "提示", JOptionPane.ERROR_MESSAGE);

@@ -9,7 +9,6 @@ import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -28,6 +27,8 @@ public class CodeDialog {
 	JTextField field01,field02;
 	JButton button01,button02,button03;
 	MyListener myListener;
+	@SuppressWarnings("unused")
+	private UserUI owner;
 	int flag=0;
 	Object[][] data;
 	JTable vtable;
@@ -36,12 +37,13 @@ public class CodeDialog {
 	int column;
 	String code=null;
 	Timer timer=new Timer();
-	public CodeDialog(JFrame owner,Object[][] data,JTable vtable,DefaultTableModel dtm,int row,int column) {
+	public CodeDialog(UserUI owner,Object[][] data,JTable vtable,DefaultTableModel dtm,int row,int column) {
 		this.data=data;
 		this.vtable=vtable;
 		this.dtm=dtm;
 		this.row=row;
 		this.column=column;
+		this.owner=owner;
 		dialog=new JDialog(owner, true);
 		dialog.setUndecorated(true);
 		dialog.setTitle("资料修改验证");
@@ -123,7 +125,7 @@ public class CodeDialog {
 					JOptionPane.showMessageDialog(null, "验证码不能为空!","警告",JOptionPane.WARNING_MESSAGE);
 				}else {
 					if(field02.getText().equals(code)) {
-						code=null;
+						code="";
 						dialog.dispose();
 						JOptionPane.showMessageDialog(null, "修改成功！");
 						setFlag(1);
@@ -155,6 +157,7 @@ public class CodeDialog {
 				String phonemsg = PhoneCode.getPhonemsg(field01.getText(), 1);
 				if(phonemsg.equals("true")) {
 					code=PhoneCode.codeNum;
+					System.out.println(code);
 				}
 			}
 		}

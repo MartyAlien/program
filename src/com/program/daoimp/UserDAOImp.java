@@ -3,6 +3,8 @@ package com.program.daoimp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -105,4 +107,24 @@ public class UserDAOImp extends AdapterDAO{
 		int updateNum = jt.update(sql,newValue,ID);
 		return updateNum;
 	}
+	@Override
+	public int updateForBill(int UID, int PID, int newMoney) {
+		sql="update user set advDeposit=? where ID=?";
+		int updateNum = jt.update(sql,newMoney,UID);
+		String sql2="update pay set isPay='1',payDate=? where ID=?";
+		jt.update(sql2,new Timestamp(new Date().getTime()),PID);
+		return updateNum;
+	}
+	@Override
+	public List<?> selectOne() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public List<?> selectOne(Object obj) {
+		User user=(User)obj;
+		sql="select * from user where userName=?";
+		List<User> query =(List<User>) jt.query(sql, new BeanPropertyRowMapper(User.class),user.getUserName());
+		return query;
+	}
+	
 }

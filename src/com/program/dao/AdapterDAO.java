@@ -22,7 +22,7 @@ public class AdapterDAO implements DAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public void delete(List<?> list) {
 		// TODO Auto-generated method stub
@@ -45,6 +45,19 @@ public class AdapterDAO implements DAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int updateForBill(int UID, int PID, int newMoney) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<?> selectOne() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 }
