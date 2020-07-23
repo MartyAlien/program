@@ -39,6 +39,12 @@ public class AdapterDAO implements DAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<?> selectForNoPay(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

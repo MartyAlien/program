@@ -137,7 +137,8 @@ public class UserUI extends JFrame{
 		jPanel01.add(initBtnPane());
 		jPanel02.add(masterPaneSon1);
 		jPanel03.add(masterPaneSon2);*/
-		paneSon1=new UserPaneSon1();
+//		paneSon1=new UserPaneSon1();
+		paneSon1=new UserPaneSon1(user);
 		jPanel01.add(paneSon1);
 		paneSon2=new UserPaneSon2(user);
 //		paneSon2=new UserPaneSon2();

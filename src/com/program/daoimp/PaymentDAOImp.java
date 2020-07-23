@@ -56,5 +56,10 @@ public class PaymentDAOImp extends AdapterDAO{
 		}
 		return count;
 	}
-	
+	@Override
+	public List<?> selectForNoPay(String userName) {
+		sql="select * from pay where userName=? and isPay='0'";
+		List<Payment> query = jt.query(sql, new BeanPropertyRowMapper<Payment>(Payment.class),userName);
+		return query;
+	}
 }
