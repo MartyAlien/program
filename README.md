@@ -1,4 +1,4 @@
-# 基于Java实现的物业收费管理系统:palm_tree:
+# 基于Java实现的物业收费管理系统:memo:
 ## 1. 项目说明:facepunch:
 这是课程设计中的一个实训项目，要求本组人员完成物业收费管理系统，由题可知，重在‘收费’，
 本系统设计三个模块：居民模块、管理员模块、账单模块
@@ -17,10 +17,10 @@
 - [x] 充值接口:red_circle:
 
 ## 3. 程序使用效果图
-### 1. 居民模式
+### 1. 居民模式:rocket:
 ![imgae](https://github.com/MartyAlien/program/blob/master/01.gif)
 
-### 2. 管理员模式
+### 2. 管理员模式:rocket:
 ![imgae](https://github.com/MartyAlien/program/blob/master/02.gif)
  
 
