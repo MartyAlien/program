@@ -18,7 +18,7 @@
 
 ## 3. 程序使用效果图
 ### 1. 居民模式:rocket:
-![imgae](https://github.com/MartyAlien/program/blob/master/01.gif)
+
 ### 2. 管理员模式:rocket:
 ![imgae](https://github.com/MartyAlien/program/blob/master/02.gif)
  
